@@ -36,8 +36,8 @@ export interface IModelInferenceParams {
     singleSegment: boolean;
     maxTokens: string;
     language: string;
-    numThreads: string;
-    audioContext: string;
+    numThreads: number;
+    audioContext: number;
     speedUp: boolean;
     tinydiarize: boolean;
 }
