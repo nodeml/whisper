@@ -22,6 +22,13 @@ DownloadWhisperCpp(${WHISPER_CPP_VERSION} ${CMAKE_SOURCE_DIR}/deps)
 set(WHISPER_BUILD_TESTS OFF)
 set(WHISPER_BUILD_EXAMPLES OFF)
 
+find_package(CUDAToolkit)
+
+if (CUDAToolkit_FOUND)
+    set(WHISPER_CUBLAS ON)
+endif()
+
+
 add_subdirectory(${CMAKE_SOURCE_DIR}/deps/whisper whisper)
 
 # Build a shared library named after the project from the files in `src/`

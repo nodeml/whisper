@@ -1,6 +1,6 @@
 #pragma once
 #include <napi.h>
-#include "whisper.h"
+#include <whisper.h>
 
 namespace nodeml_whisper
 {
@@ -38,14 +38,22 @@ namespace nodeml_whisper
 
         whisper_context * model;
 
+        std::mutex mutex;
+
         static Napi::Object Init(Napi::Env env, Napi::Object exports);
 
         Model(const Napi::CallbackInfo &info);
+
+        ~Model();
 
         static Napi::Object FromNativeModel(Napi::Env env,whisper_context * nativeModel);
 
         static Model *FromObject(Napi::Value value);
 
         static Napi::Value Create(const Napi::CallbackInfo &info);
+
+        Napi::Value Predict(const Napi::CallbackInfo &info);
+
+        Napi::Value Free(const Napi::CallbackInfo &info);
     };
 }

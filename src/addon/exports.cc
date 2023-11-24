@@ -1,5 +1,5 @@
 #include <napi.h>
-#include <nodeml_whisper/Model.h>
+#include <addon/Model.h>
 
 
 Napi::Object InitModule(Napi::Env env, Napi::Object exports)
